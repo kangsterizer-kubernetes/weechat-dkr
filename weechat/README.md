@@ -36,3 +36,7 @@ Look at these:
 - https://gist.github.com/pascalpoitras/8406501
 - https://gist.github.com/tracphil/0a6d897f6598abb6a14e
 - https://weechat.org/files/doc/stable/weechat_quickstart.en.html
+
+## Configure Slack
+
+This default config comes with slack preinstalled, but you still need to set it up as per: https://github.com/wee-slack/wee-slack#4-add-your-slack-api-keys
