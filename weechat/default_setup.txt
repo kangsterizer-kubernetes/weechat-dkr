@@ -1,0 +1,77 @@
+# Copy paste or eval-me me in a weechat terminal to apply
+# Don't forget to edit, first!
+
+
+# Secrets!
+# run these manually instead, so that you don't save them anywhere unsafe...
+/secure set relaypass BLAH
+/secure set freenodepass BLAH
+/secure set mozillapass BLAH
+
+
+# Some defaults
+/set irc.server_default.nicks kang,kang1,kang2,kang3
+/set irc.server_default.ssl_verify on
+/set irc.server_default.capabilities "account-notify,away-notify,cap-notify,multi-prefix,server-time,znc.in/self-message"
+/set weechat.look.highlight "(?-i)kang,(?-i)"
+/set weechat.look.highlight_regex ".*\bk.ang\b.*|.*\bkan.g\b.*|.*\bk.a.n.g\b.|.*\bka.ng\b."
+/set irc.look.smart_filter_delay 60
+/set irc.look.smart_filter_mode "ovh"
+/set irc.look.smart_filter_quit on
+
+
+# Some aliases
+/alias add wc /close
+/alias add win /buffer
+
+
+# IRC Networks
+/server add freenode chat.freenode.net -ssl -autoconnect
+/set irc.server.freenode.sasl_password ${sec.data.freenodepass}
+/set irc.server.freenode.sasl_username kang
+
+/server add mozilla irc.mozilla.org:6697 -ssl -autoconnect
+/set irc.server.mozilla.sasl_password ${sec.data.mozillapass}
+/set irc.server.mozilla.sasl_username kang
+/set irc.server.mozilla.autojoin "#infosec"
+/connect -all
+
+
+# Misc
+/mouse enable
+
+
+# Scripts
+/set weechat.plugin.autoload "*,!lua,!tcl,!fifo,!xfer,!guile,!javascript"
+
+/script install whois_on_query.py
+/script install auto_away.py
+/set plugins.var.python.auto_away.message "Detached from screen - away from keyboard. Please leave a message."
+/set plugins.var.python.auto_away.idletime 60
+/script install tmux_env.py
+/script install screen_away.py
+/script install go.py
+/script install autosavekey.py
+/script install buffer_autoclose.py
+/script install slack.py
+/script install otr.py
+/script install grep.py
+/script install buffer_autoclose.py
+/script install title.py
+
+/script install screen_away.py
+plugins.var.python.screen_away.set_away
+
+
+# Enable spellcheck
+/set aspell.check.default_dict en
+/set aspell.check.suggestions 3
+/set aspell.color.suggestion *green
+/aspell enable
+
+
+# Enable relay
+/relay sslcertkey
+/relay add ssl.weechat 9001
+/set relay.network.password ${sec.data.relaypass}
+/set relay.network.bind_address "127.0.0.1"
