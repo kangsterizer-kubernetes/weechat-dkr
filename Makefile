@@ -1,4 +1,9 @@
 all: Dockerfile
 	docker build -t weechat:latest .
 
-.PHONY: all
+hub:
+	docker login
+	docker tag weechat:latest kangsterizer/weechat
+	docker push kangsterizer/weechat
+
+.PHONY: all hub
