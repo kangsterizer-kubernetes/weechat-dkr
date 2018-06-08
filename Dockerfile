@@ -6,7 +6,7 @@ RUN pacman -Syu --noconfirm && \
     pacman -S --noconfirm \
            base-devel \
            python2-websocket-client \
-           weechat python2 aspell git python2-crypto
+           weechat python2 aspell aspell-en git python2-crypto
 
 # Cleanup
 RUN paccache -r -k 0
