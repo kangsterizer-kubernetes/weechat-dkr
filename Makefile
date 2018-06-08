@@ -13,6 +13,9 @@ hub:
 install:
 	docker volume create $(VOLUME)
 
+edit:
+	docker run --mount source=$(VOLUME),target=/home/arch/.weechat -w /home/arch/.weechat -ti weechat bash
+
 # net=host is require to listen on the host ports without additional setup
 # note that the volume is the one created above
 start:
